@@ -1,0 +1,44 @@
+
+1,research_refuse.gorders.tar.gz  是订单的数据，大概30000条，每条用“,”分割, 各个字段表示的含义如下：
+    id: 订单id
+    ida：用户设备唯一标识，用来定位log中的数据
+    gorder_status
+    created_utc:订单创建的UTC时间，用来定位对应日期的日志文件
+    item_goods_id:商品id
+    item_goods_name:商品名称
+    item_num: 商品个数
+    item_price: 商品价格
+    item_total_price:商品总价
+    user_pro: 用户收货地址省份
+    user_street_bit: 用户收货地址的byte长度
+    express_name:使用的快递公司名字
+    item_desc: 用户的备注
+    auditor_desc: 审核员的备注 （可能会有用户拒收的原因）
+    request: 创建订单的get请求参数
+
+    gorder_status 订单状态码的说明：
+#        0 ='下单成功，等待用户确认'        --用户可以进行的操作有: 取消、确认
+#        10='审核员已确认，等待厂商确认' 
+#        11='审核无效' 
+#        12='下单成功，已经支付' 
+#        13='下单成功, 等待支付'            --用户可以进行的操作有: 取消、 货到付款、在线支付
+#        14='用户已取消' 
+#        15='用户已确认，等待审核员确认' 
+#        16='审核员已确认，等待厂商确认' 
+#        19='正在生产' 
+#        20='生产完成' 
+#        30='质检合格' 
+#        40='已经发货' 
+#        50='已经收货' 
+#        31='质检不合格' 
+#        51='用户拒收' 
+#        60='货款已到账'
+
+2,nginx_logs.tar.gz, 使用的访问日志，2013-12-16到2014-03-31, 每天一个日志。
+   日志文件，可以根据订单的"created_utc"定位到是哪一天的日志，然后根据"ida"找到用户的访问日志。
+   用户的访问日志主要参考这种格式的日志：/statistic/setpageview?pagename=Case3D
+       CaseEnter:用户进入定制页面
+       Case3D:用户进入定制页面
+       CasePic:用户进入编辑界面
+       CaseBuy:用户进入下单界面
+       CaseOrder:用户下单操作
