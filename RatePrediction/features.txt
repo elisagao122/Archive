@@ -1,0 +1,61 @@
+# Features
+单条记录 1. 机型 iPhone model（离散化）
+单条记录 2. 操作响应平均时间 response time
+单条记录 3. 每条操作序列长度 sequence length
+*多条记录 4. 相同用户出现次数 sequence number
+单条记录 5. 操作之间的平均停留时间 operation average time
+单条记录 6. 是否编辑 picture edit
+单条记录 7. 编辑的停留时间 edit time
+单条记录 8. 是否点击购买 buy click
+单条记录 9. 填写订单的时间 buy time
+单条记录 10. 是否点击下单 order click
+单条记录 11. 来源的app（离散化）
+单条记录 12. CasePic/CaseBuy共现次数
+单条记录 13. CasePic/CaseOrder共现次数
+
+# 下单的才有的Feature
+*a. 收货城市（离散化维数较高）
+*b. 手机号与地址是否匹配
+c. 快递公司（离散化）
+    EMS 1480
+    顺丰 12022
+    圆通 5
+    如风达 4
+    申通 1
+    圆通快递 11
+    D042490039 1
+    中通 15
+    Unknown 17423
+    韵达 11
+e. 手机壳类型（离散化）
+f. 商品价格
+g. 商品数量
+h. 收货地址长度
+i. 是否有用户备注
+*j. 用户下单前的信息
+	下订单次数
+	拒收次数
+	付钱次数
+	编辑次数
+	Case3D数目
+k. 来源app
+
+
+# 类标
+i.   货到付款（id 50）
+ii.  货到拒收（id 51）
+iii. 取消订单（id 14）
+
+# Inferences 与用户性格相关
+1. 一个sequence多次Case3D，比较图片次数较多，谨慎
+2. 多个sequence才下单
+3. 一个sequence就下单
+4. 支付宝立即付款
+
+# 备注
+图片的编辑信息log缺失
+选择图片的操作log缺失
+手机型号的选择log缺失
+手机壳类型的选择log缺失
+购买的图片信息log缺失
+
